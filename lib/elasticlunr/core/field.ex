@@ -376,10 +376,9 @@ defmodule Elasticlunr.Field do
   defp match_with_fuzz(field, term, fuzz, query, matching_docs) when fuzz > 0 do
     field
     |> unique_terms_lookup()
-    |> Enum.reduce(matching_docs, fn {key, _id, _attr}, matching_docs ->
+    |> Enum.reduce(matching_docs, fn {key, id, _attr}, matching_docs ->
       if Utils.levenshtein_distance(key, term) <= fuzz do
-        ids = matching_ids(field, term)
-        filter_ids(field, ids, key, matching_docs, query)
+        filter_ids(field, [id], key, matching_docs, query)
       else
         matching_docs
       end
