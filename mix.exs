@@ -12,7 +12,6 @@ defmodule Elasticlunr.MixProject do
       start_permanent: Mix.env() == :prod,
       description: description(),
       package: package(),
-      aliases: aliases(),
       deps: deps(),
       source_url: @source_url,
 
@@ -65,12 +64,6 @@ defmodule Elasticlunr.MixProject do
       {:mox, "~> 1.0", only: :test},
       {:stemmer, "~> 1.0"},
       {:uniq, "~> 0.4"}
-    ]
-  end
-
-  defp aliases do
-    [
-      test: ~w[format credo test]
     ]
   end
 
